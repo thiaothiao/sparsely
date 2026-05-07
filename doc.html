@@ -1,0 +1,240 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sparsely User Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="sparsely-global.css">
+    <link rel="stylesheet" href="sparsely-doc.css">
+    <link rel="author" href="humans.txt">
+  </head>
+  <body>
+    <div class="doc__bg"></div>
+    <nav class="header">
+      <h1 class="logo">Sparsely <span class="logo__thin">Doc</span></h1>
+      <ul class="menu">
+        <div class="menu__item toggle"><span></span></div>
+        <li class="menu__item"><a href="https://github.com/thiaothiao/sparsepc" class="link link--dark"><i class="fa fa-github"></i> Github</a></li>
+        <li class="menu__item"><a href="index.html" class="link link--dark"><i class="fa fa-home"></i> Home</a></li>
+      </ul>
+    </nav>
+    <div class="wrapper">
+      <aside class="doc__nav">
+        <ul>
+          <li class="js-btn selected">Installation</li>
+          <li class="js-btn">Launch the application</li>
+          <li class="js-btn">Create a new project</li>
+          <li class="js-btn">Input data format</li>
+          <li class="js-btn">Save current project</li>
+          <li class="js-btn">Open existing project</li>
+          <li class="js-btn">Compute sparse components</li>
+          <li class="js-btn">Plot type</li>
+          <li class="js-btn">Reading and interpreting the plots</li>
+          <li class="js-btn">Define preferences</li>
+          <li class="js-btn">Using plot tools</li>
+          <li class="js-btn">Compute methods</li>
+          <li class="js-btn">Extending methods via addons</li>
+          <li class="js-btn">Extending methods via C++</li>          
+          <li class="js-btn">Technical references</li>
+          <li class="js-btn">License</li>
+        </ul>
+      </aside>
+      <article class="doc__content">
+        <section class="js-section">
+          <h3 class="section__title">Installation</h3>
+          <ul>
+            <li>Windows</li>
+            <p>Launch the installer: <code>Sparsely-0.1.0-win64.exe</code></p>
+            <li>Linux</li>
+            <p>Install xcb: <code>apt update & apt install libxcb-cursor0</code></p>
+            <p>Launch the installer: <code>Sparsely-0.1.0-Linux.run</code></p>
+            <li>Mac</li>
+            <p>Launch the installer: <code>Sparsely-0.1.0-Darwin.dmg</code></p>
+          </ul>
+          <p>Follow the on-screen instructions.</p>
+          <div style="text-align: center;">
+            <img src="installer-welcome.png" alt="Installer welcome screenshot">
+          </div>
+          <p>Sparsely should be available on shortcut menus.</p>
+          <hr />
+        </section>
+        <section class="js-section">
+          <h3 class="section__title">Launch the application</h3>
+          <p>You can now run the application from the shortcut menus or the installation folder. You should see the welcome window below.</p>
+          <div style="text-align: center;">
+            <img src="sparsely-welcome.png" alt="Sparsely welcome">
+          </div>
+          <hr />
+        </section>
+        <section class="js-section">
+          <h3 class="section__title">Create a new project</h3>
+          <p>Go to the File menu > New and select your input data.</p>
+          <div style="text-align: center;">
+            <img src="sparsely-menuFile.png" alt="Sparsely menu File">
+          </div>
+          <div style="text-align: center;">
+            <img src="sparsely-newFile.png" alt="Sparsely new File">
+          </div>
+          <div style="text-align: center;">
+            <img src="sparsely-dataLoaded.png" alt="Sparsely data loaded">
+          </div>
+          <p>The data are now loaded and ready for processings.</p>
+          <hr />
+        </section>
+        <section class="js-section">
+          <h3 class="section__title">Input data format</h3>
+          <p>We are currently using a CSV format. We will extend it to other formats in future versions.</p>
+          <p>Each column represents one feature and each row represents one sample. We load data with or without a header.</p>
+          <div style="text-align: center;">
+            <img src="data_noheader.png" alt="Sparsely data no header">
+          </div>
+          <div style="text-align: center;">
+            <img src="data_withheader.png" alt="Sparsely data with header">
+          </div>
+          <hr />
+        </section>
+        <section class="js-section">
+          <h3 class="section__title">Save current project</h3>
+          <p>To save your current work and retrieve it later, go to the File menu > Save. The project will be stored as a binary format ".sparsely".</p>
+          <div style="text-align: center;">
+            <img src="sparsely-save.png" alt="Sparsely save project">
+          </div>
+          <hr />
+        </section>
+        <section class="js-section">
+          <h3 class="section__title">Open existing project</h3>
+          <p>Retrieve your saved work and continue your processings.</p>
+          <div style="text-align: center;">
+            <img src="sparsely-open-project.png" alt="Sparsely open project">
+          </div>
+          <hr />
+        </section>
+        <section class="js-section">
+          <h3 class="section__title">Compute sparse components</h3>
+          <p>"Sparse" button must be checked.</p>
+          <p>"Add new" button validates current round sparse component candidate and launch the computation of the next round sparse component candidates. Computations progress are reported by a progress bar dialog.</p>
+          <p>"Sparse" button must be checked.</p>
+          <p>"Remove last" button removes current round sparse component candidates and makes the previous ones candidates.</p>
+          <p>You can process standard components by checking the "Standard" button. Standard components are mainly used as controls about cumulative explained variances.</p>
+          <div style="text-align: center;">
+            <img src="sparsely-compute-spcs.png" alt="Sparsely compute spc">
+          </div>
+          <p>Use the slider to tune and choose one sparse component candidate for the ongoing round.</p>
+          <div style="text-align: center;">
+            <img src="sparsely-compute-spcs-control-sparsity.png" alt="Sparsely control spc">
+          </div>
+          <p>Launch next round sparse component ...</p>
+          <div style="text-align: center;">
+            <img src="sparsely-compute-another-spcs.png" alt="Sparsely compute another spc">
+          </div>
+          <div style="text-align: center;">
+            <img src="sparsely-compute-another-spcs-control-sparsity.png" alt="Sparsely control another spc sparsity">
+          </div>
+          <p>You can choose between several methods via the "Method" drop down menu.</p>
+          <div style="text-align: center;">
+            <img src="sparsely-Methods.png" alt="Sparsely compute methods">
+          </div>
+          <hr />
+        </section>
+        <section class="js-section">
+          <h3 class="section__title">Plot type</h3>
+          <p>You can change the plot type via the "Plot" drop down menu.</p>
+          <div style="text-align: center;">
+            <img src="sparsely-plots.png" alt="Sparsely plot types">
+          </div>
+          <hr />
+        </section>
+        <section class="js-section">
+          <h3 class="section__title">Reading and interpreting the plots</h3>
+          <p>By default, solid and dotted plots represent standard and sparse principal components curves, respectively. The standard principal components are used only for controls.</p>
+          <p>The round of each principal component and the corresponding cumulative explained variances are indicated on the plot legend text formatted as [round number]:[round cumulative explained variances]. Each round has its own color.</p>
+          <p>The slider controls and tunes the sparsity of a candidate sparse principal component at the current round. It has the same color as the round.</p>
+          <p>The capture below shows 3 first standard principal components which cumulate around 99.8% from the total variance and 2 first sparse principal components that cumulate around 99.5%. The slider, in green color, indicates the maximum allowed cardinality k = 148 of the candidate sparse component, in green, at its top left corner.</p>
+          <div style="text-align: center;">
+            <img src="sparsely-compute-another-spcs-control-sparsity.png" alt="Sparsely control another spc sparsity">
+          </div>
+          <hr />
+        </section>
+        <section class="js-section">
+          <h3 class="section__title">Define preferences</h3>
+          <p>Go to the Edit menu > Preferences</p>
+          <div style="text-align: center;">
+            <img src="sparsely-prefernces.png" alt="Sparsely open prefernces">
+          </div>
+          <hr />
+        </section>
+        <section class="js-section">
+          <h3 class="section__title">Using plot tools</h3>
+          <p>The plot window embeds several tools: save plot as image, save plot data, graph visibility, ...</p>
+          <div style="text-align: center;">
+            <img src="sparsely-tools-save-plot.png" alt="Sparsely save plot">
+          </div>
+          <div style="text-align: center;">
+            <img src="sparsely-tools-disable-plots.png" alt="Sparsely enable-disable plot">
+          </div>
+          <hr />
+        </section>
+        <section class="js-section">
+          <h3 class="section__title">Compute methods</h3>
+          <p>Sparsely is a standalone software using the sparse principal component C++ header only library Sparsepc. The solver implements several methods and can be used independently from Sparsely. It will be feeded with new implemented sparse pc methods.</p>
+          <div style="text-align: center;">
+            <img src="spca-formulation.png" alt="Spca problem formulation">
+          </div>
+          <p>We have implemented Dca method from Thiao et al., Gspca backward and forward methods from Moghaddam et al. and deflation methods from Mackey et al.</p>
+          <p>We plan to implement all sparse principal component methods and deflation techniques and incorporate them into the solver.</p>
+          <hr />
+        </section>
+        <section class="js-section">
+          <h3 class="section__title">Extending methods via addons</h3>
+          <p>User can extend computation methods dynamically by providing dynamic libraries (.dll, .so, .dylib) of his own sparse principal component methods. These files should be placed on a folder defined via Sparsely preferences settings.</p>
+          <p>The dynamic library should expose the following function:</p>
+          <div class="code__block code__block--notabs">
+            <pre class="code code--block">
+              <code>
+                /**
+                * @brief Computes a sparse eigen vector.
+                * @param[in] sigmaData, covariance matrix in col major layout.
+                * @param[in] n, covariance matrix size.
+                * @param[in] k, sparsity level, number of nonzeros.
+                * @param[out] sparseEigenVectorData, preallocated for n values.
+                * @note This function does not check for overflow or nullity.
+                */
+                void computeSparseEigenVector(const double* sigmaData, int n, int k, double* sparseEigenVectorData);
+              </code>
+            </pre>
+          </div>
+          <p>Then choose the line corresponding to the addon name in Method drop down menu.</p>
+          <div style="text-align: center;">
+            <img src="sparsely-useraddon.png" alt="Sparsely user addon">
+          </div>
+          <hr />
+        </section>
+        <section class="js-section">
+          <h3 class="section__title">Extending methods via C++</h3>
+          <p>Computation methods can be extended statically using C++ by inserting the user's sparse principal component code in the class CustomSolverModel defined in the file include\sparsepc\custom\solver.hpp and recompile Sparsely.</p>
+          <p>Then choose Custom in the Method drop down menu.</p>
+          <div style="text-align: center;">
+            <img src="sparsely-custom.png" alt="Sparsely Custom">
+          </div>
+          <hr />
+        </section>
+        <section class="js-section">
+          <h3 class="section__title">Technical references</h3>
+          <a href="technicalreport.pdf" target="_blank">View the technical report</a>
+          <hr />
+        </section>
+        <section class="js-section">
+          <h3 class="section__title">License MPL 2.0</h3>
+          <a href="license.pdf" target="_blank">View the license</a>
+        </section>
+      </article>
+    </div>
+    <footer class="footer">Sparsely is an Open Source Software for Sparse Principal Component Analysis.</footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="sparsely.js"></script>
+  </body>
+</html>

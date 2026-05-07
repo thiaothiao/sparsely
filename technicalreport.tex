@@ -1,0 +1,81 @@
+
+
+% This is a simple sample document.  For more complicated documents take a look in the exercise tab. Note that everything that comes after a % symbol is treated as comment and ignored when the code is compiled.
+
+\documentclass[fleqn]{report} % \documentclass{} is the first command in any LaTeX code.  It is used to define what kind of document you are creating such as an article or a book, and begins the document preamble
+
+\usepackage{amsmath} % \usepackage is a command that allows you to add functionality to your LaTeX code
+\usepackage{amsfonts}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}}
+%\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+
+
+
+\title{Technical report\\Sparse Principal Component Solver} % Sets article title
+\author{Dr. Mamadou THIAO} % Sets authors name
+\date{\today} % Sets date for date compiled
+\newtheorem{thm}{Proposition}[subsection]
+\newenvironment{proof}{\paragraph{Proof:}}{\hfill$\square$}
+\newtheorem{crly}{Corollary}[subsection]
+
+% The preamble ends with the command \begin{document}
+\begin{document} % All begin commands must be paired with an end command somewhere
+    \maketitle % creates title using information in preamble (title, author, date)
+    \tableofcontents
+    \section{Sparse Principal Component Problem} % creates a section
+A formulation of the Sparse Principal Component Problem is as follows
+\begin{equation}
+		\label{Constrained_spca}
+		(\text{SPCA}_{\Sigma}^{k})\;
+		\left\{
+		\begin{array}{ll}\max & x^{T}\Sigma x\\
+			s.t.&x^{T}x = 1,\\
+			&\left\|x\right\|_0 \leq k,\\
+			&\;x\in\mathbb{R}^n,\\
+		\end{array} 
+		\right.
+    \end{equation}
+		where the integer parameter $1 \leq k\leq n $ controls the sparsity of the solution.
+    \section{Extracting several sparse components} % creates a section
+A well know technique to extract more than one sparse component is by deflating the covariance matrix at each round. see Mackey et al.
+\begin{algorithm}[H]
+        \caption{Generalized Deflation Method for Sparse PCA}
+        \label{alg:gdmspca}
+        \begin{algorithmic}[1] % [1] adds line numbering
+	  \State Given: covariance matrix  $\Sigma_0$, number of rounds $r$, $\left\{k_1,...,k_r\right\}\subset\left\{1, ..., n\right\}$.
+	\State $B_0 := I$,
+            \For{$t=1, ..., r$}
+		\State $x_t := \underset{x^{T}B_{t-1}x = 1, \left\|x\right\|_0 \leq k}{\text{argmax}}\; x^{T}\Sigma_{t-1} x$
+		\State  $q_t :=B_{t-1}x_t$
+		\State $\Sigma_{t} := (I-q_t^{T}q_t)\Sigma_{t-1}(I-q_t^{T}q_t)$
+		\State $B_{t} := B_{t-1}(I-q_t^{T}q_t)$
+		\State $x_{t} := x_{t} \slash\left\| x_{t}\right\|_2$
+	 \EndFor
+            \State \Return $\left\{x_1,...,x_r\right\}$
+        \end{algorithmic}
+    \end{algorithm}
+An approach for solving point 4: in Algorithm~\ref{alg:gdmspca} is to first replace $x^{T}B_{t-1}x = 1$ by $x^{T}(B_{t-1} + \epsilon I)x = 1$ and use Woodbury matrix identity to transform it in the form of \ref{Constrained_spca}. To be detailed!
+\section{Implemented methods} 
+\begin{itemize}
+\item Dca method from Thiao et al.
+\item Gspca forward and backward methods from Moghaddam et al.
+\item We will implement all the sparse principal component methods and deflation techniques and incorporate them into the solver.
+\end{itemize}
+\begin{thebibliography}{99} % The '9' handles up to 9 references
+
+\bibitem{Mackey2010}
+Thiao, M., Pham Dinh, T., \& Le Thi, H. A. L.: \textit{A DC Programming Approach for Sparse Eigenvalue Problem}. Proceedings of the 27th International Conference on Machine Learning (2010).
+
+\bibitem{Mackey2008}
+Mackey, L.: \textit{Deflation methods for sparse PCA.} Advances in Neural Information Processing Systems (2008), 21:1017–1024.
+
+\bibitem{Moghaddam2006}
+Moghaddam, B., Weiss, Y., \& Avidan, S.: \textit{Spectral bounds for sparse PCA: Exact and greedy
+algorithms.} Advances in Neural Information Processing Systems (2006), 18.
+
+\end{thebibliography}
+\end{document} % This is the end of the document

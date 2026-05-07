@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="description" content="">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="icon" type="image/svg+xml" href="logo.svg">
+      <title>Sparsely: A Sparse PC Analyzer</title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800,900" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css">
+      <link rel="stylesheet" href="sparsely-global.css">
+      <link rel="stylesheet" href="sparsely-landing.css">
+      <link rel="author" href="humans.txt">
+  </head>
+  <body>
+    <nav>
+      <div>
+        <img src="banner.png" alt="Sparsely banner" width=auto height="80">
+      </div>
+      <ul class="menu">
+        <div class="menu__item toggle"><span></span></div>
+        <li class="menu__item"><a href="doc.html" class="link link--dark"><i class="fa fa-book"></i> User Guide</a></li>
+        <li class="menu__item"><a href="https://github.com/thiaothiao/sparsepc" class="link link--dark"><i class="fa fa-github"></i> Github</a></li>
+      </ul>
+    </nav>
+    <div style="text-align: center;">
+      <p style="font-style: italic;">A Sparse Principal Component Solver and Selector</p>
+      <img src="welcome.png" alt="Capture d'écran Sparsely" width=auto height="350">
+    </div>
+    <div class="wrapper">
+      <div class="installation">
+        <h3 class="section__title">Download</h3>
+        <div class="tab__container">
+          <ul class="tab__menu">
+            <li class="tab active"  data-tab="win">win</li>
+            <li class="tab" data-tab="linux">linux</li>
+            <li class="tab" data-tab="mac">mac</li>
+          </ul>
+          <pre class="nohighlight code">
+            <code class="tab__pane active win">Sparsely-0.1.0-win64.exe</code>
+            <code class="tab__pane linux">Sparsely-0.1.0-Linux.run</code>
+            <code class="tab__pane mac">Sparsely-0.1.0-Darwin.dmg</code>
+          </pre>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature__item">
+          <h3 class="section__title">Easy to Use</h3>
+          <p>Start your data analysis immediately after installation. Create your project by loading your data.</p>
+        </div>
+        <div class="feature__item">
+          <h3 class="section__title">Saving Projects</h3>
+          <p>Save the current state of your project and retrieve it later.</p>
+        </div>
+        <div class="feature__item">
+          <h3 class="section__title">Capturing Data</h3>
+          <p>Use graph tools to export data and plots.</p>
+        </div>
+        <div class="feature__item">
+          <h3 class="section__title">Processing</h3>
+          <p>Sparsely offers a very simple interface allowing you to compute sparse principal components via various methods. It allows to run several principal component rounds. It also offers the possibility of using classical principal components as controls.</p>
+        </div>
+        <div class="feature__item">
+          <h3 class="section__title">Visualization</h3>
+          <p>The proposed plots and controls make it easy to read components behaviors for a better interpretation of both sparse and classical principal components.</p>
+        </div>
+        <div class="feature__item">
+          <h3 class="section__title">Selection</h3>
+          <p>Various controls allow you to tune sparse components for a better tradeoff between interpretability and explained variances and should highlight several facets of the data.</p>
+        </div>
+        <div class="feature__item">
+          <h3 class="section__title">Sparse pc solver</h3>
+          <p>A C++ header only library for sparse principal component computations. The solver feeds Sparsely and can be used independently. It will implement several sparse principal component and deflation methods.</p>
+        </div>
+        <div class="feature__item">
+          <h3 class="section__title">Extensibility</h3>
+          <p>Incorporate your own sparse principal component method. Dynamically via addons. Statically via C++.</p>
+        </div>
+        <div class="feature__item">
+          <h3 class="section__title">Preferences</h3>
+          <p>Maintain all your preferences settings (addon location, preferred method, plot type, colors ...) in a single json file.</p>
+        </div>
+        <div class="feature__item">
+          <h3 class="section__title">Platforms</h3>
+          <p>An Open Source Software on your favorite Os: Windows, Linux, macOs.</p>
+        </div>
+        <div class="feature__item">
+          <h3 class="section__title">Applications</h3>
+          <p>Yearly Data analysis on exchange rates over several decades around 365 features (days) and 20 samples (years).</p>
+        </div>
+        <div class="feature__item">
+          <h3 class="section__title">Thoughts</h3>
+          <p>The tool should be very practical for engineers, scientists and other data professionals. It would be great if the tool and its next versions helped make it easy to use sparse principal component analysis.</p>
+        </div>        
+      </div>
+      <div class="callout">
+        <p>Read our documentation for guides and advanced illustrations.</p>
+        <a href="doc.html" class="button--primary">User Guide</a>
+      </div>
+    </div>
+    <footer class="footer">Sparsely is an Open Source Software for Sparse Principal Component Analysis.</footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="sparsely.js"></script>
+  </body>
+</html>
